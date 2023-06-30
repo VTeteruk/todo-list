@@ -24,7 +24,7 @@ class TaskCreateView(generic.CreateView):
 
 class TaskStatusUpdateView(generic.View):
     @staticmethod
-    def get(request: HttpRequest, task_id: int) -> HttpResponse:
+    def post(request: HttpRequest, task_id: int) -> HttpResponse:
         task = Task.objects.get(pk=task_id)
         task.toggle_status()
         return redirect("todo:tasks")
