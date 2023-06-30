@@ -9,7 +9,7 @@
   </div>
   {% for task in task_list %}
     <div>
-      <form action="{% url 'todo:task-status-update' task_id=task.id %}" method="GET" style="float: right">
+      <form action="{% url 'todo:task-status-update' task_id=task.id %}" method="POST" style="float: right">
         {% csrf_token %}
         <button type="submit" class="btn btn-secondary">
             {% if task.is_done %}
