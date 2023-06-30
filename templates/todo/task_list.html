@@ -9,6 +9,16 @@
   </div>
   {% for task in task_list %}
     <div>
+      <form action="{% url 'todo:task-status-update' task_id=task.id %}" method="GET" style="float: right">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary">
+            {% if task.is_done %}
+                Undo
+            {% else %}
+                Complete
+            {% endif %}
+        </button>
+        </form>
       <h3>{{ task.content }}{% if task.is_done %} <span style="color: #006b1b">Done</span>{% else %} <span style="color: red">Not done</span>{% endif %}</h3>
       <p>Created: {{ task.datetime }}</p>
       {% if task.deadline %}<p>Deadline: {{ task.deadline }}</p>{% endif %}

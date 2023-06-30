@@ -14,5 +14,9 @@ class Task(models.Model):
         Tag, related_name="tasks", null=True, blank=True
     )
 
+    def toggle_status(self) -> None:
+        self.is_done = not self.is_done
+        self.save()
+
     class Meta:
         ordering = ("is_done", "datetime")
