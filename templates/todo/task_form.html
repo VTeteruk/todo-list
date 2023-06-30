@@ -10,6 +10,7 @@
 
 {% block title %}{{ object|yesno:"Update,Create" }} task{% endblock %}
 
+{% block content %}
 <div style="margin-right: 60px; padding: 25px">
 <h2>{{ object|yesno:"Update the,Create a" }} task</h2>
 <form action="" method="post" class="form">
@@ -22,3 +23,4 @@
   {% endbuttons %}
 </form>
 </div>
+{% endblock %}
