@@ -5,6 +5,16 @@
   <title>Todo list - {% block  title %}{% endblock %}</title>
 </head>
 <body>
-
+<div style="display: flex">
+  <div>
+  {% block sidebar %}
+    {% include "includes/sidebar.html" %}
+  {% endblock %}
+  </div>
+  <div>
+  {% block content %}
+  {% endblock content %}
+  </div>
+</div>
 </body>
 </html>
