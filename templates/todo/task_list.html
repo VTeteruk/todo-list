@@ -2,12 +2,18 @@
 {% block title %}Tasks{% endblock %}
 
 {% block content %}
+  <div>
+  <h3>Add new task here:</h3>
+    <button class="btn btn-primary"><a href="{% url 'todo:task-create' %}" style="color: #fff; text-decoration: none">Add new task</a></button>
+    <hr>
+  </div>
   {% for task in task_list %}
     <div>
       <h3>{{ task.content }}{% if task.is_done %} <span style="color: #006b1b">Done</span>{% else %} <span style="color: red">Not done</span>{% endif %}</h3>
       <p>Created: {{ task.datetime }}</p>
       {% if task.deadline %}<p>Deadline: {{ task.deadline }}</p>{% endif %}
-      {% if task.tags %}Tags: {{ task.tags.all }}{% endif %}
+      Tags: {% for task in task.tags.all %}{{ task  }}{% empty %} No tags{% endfor %}
+    <hr>
     </div>
     {% empty %}
     <h1>No tasks yet</h1>
