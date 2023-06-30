@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+  {% for task in task_list %}
+    <div>
+      <h3>{{ task.content }}{% if task.is_done %} <span style="color: #006b1b">Done</span>{% else %} <span style="color: red">Not done</span>{% endif %}</h3>
+      <p>Created: {{ task.datetime }}</p>
+      {% if task.deadline %}<p>Deadline: {{ task.deadline }}</p>{% endif %}
+      {% if task.tags %}Tags: {{ task.tags.all }}{% endif %}
+    </div>
+    {% empty %}
+    <h1>No tasks yet</h1>
+  {% endfor %}
+{% endblock %}
