@@ -40,7 +40,12 @@ class Migration(migrations.Migration):
                 ("datetime", models.DateTimeField()),
                 ("deadline", models.DateTimeField(blank=True, null=True)),
                 ("is_done", models.BooleanField()),
-                ("tags", models.ManyToManyField(related_name="tasks", to="todo.tag")),
+                (
+                    "tags",
+                    models.ManyToManyField(
+                        related_name="tasks", to="todo.tag"
+                    ),
+                ),
             ],
         ),
     ]
